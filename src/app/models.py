@@ -149,7 +149,7 @@ class Product(db.Model):
     discontinued: Mapped[int]
 
     category: Mapped[Optional[Category]] = relationship(back_populates="products")
-    supplier: Mapped[Optional[Supplier]] = relationship(backref="products")
+    supplier: Mapped[Optional[Supplier]] = relationship(back_populates="products")
 
 
 class Shipper(db.Model):
