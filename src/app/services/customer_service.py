@@ -6,6 +6,7 @@ from sqlalchemy.orm import joinedload
 from app.models import Customer, Order
 from app.exceptions import *
 from app.db import db
+from app.repositories import customer_repository
 
 
 logger = root_logger.getLogger("northwind")
@@ -22,7 +23,7 @@ def get_all_customers(page: str = "1", page_size: int = 15) -> List[Dict]:
 
     logger.debug("Requested page is: %s", page)
     logger.debug("Requested page size is: %s", page_size)
-    customers = Customer.query.limit(page_size).offset((page - 1) * page_size).all()
+    customers = customer_repository.get_customers(page, page_size)
     logger.debug("Returning the customers of length: %s", len(customers))
 
     return [customer.to_dict() for customer in customers]
@@ -33,7 +34,7 @@ def get_customer(customer_id: str) -> Dict:
         logger.error("Requested customer id %s is invalid", customer_id)
         raise InvalidResourceIdException(f"Requested customer id {customer_id} is invalid")
 
-    customer: Customer = Customer.query.get(customer_id)
+    customer: Customer = customer_repository.get_customer(customer_id)
     if customer is None:
         logger.error("customer not found with id '%s'", customer_id)
         raise ResourceNotFoundException(f"customer not found with id {customer_id}")
@@ -42,7 +43,6 @@ def get_customer(customer_id: str) -> Dict:
     return customer.to_dict()
 
 def add_customer(data) -> None:
-
     if (not data.get('customer_id')
             or len(str(data.get('customer_id'))) == 0
             or not data.get('company_name')
