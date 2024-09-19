@@ -39,7 +39,7 @@ class MyJSONFormatter(logging.Formatter):
     @override
     def format(self, record: logging.LogRecord) -> str:
         message = self._prepare_log_dict(record)
-        return json.dumps(message, default=str)
+        return json.dumps(message, default=str, ensure_ascii=False)
 
     def _prepare_log_dict(self, record: logging.LogRecord):
         pass
