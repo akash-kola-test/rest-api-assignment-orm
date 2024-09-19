@@ -1,8 +1,9 @@
 import logging
 
 from flask import Blueprint, request
-from ..exceptions import *
-from . import customer_service
+from app.exceptions import *
+from app.services import customer_service
+
 
 customer_bp = Blueprint("customers", __name__)
 logger = logging.getLogger("northwind")

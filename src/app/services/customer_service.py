@@ -3,9 +3,10 @@ from typing import List, Dict
 
 from sqlalchemy.orm import joinedload
 
-from ..models import Customer, Order
-from ..exceptions import *
-from ..db import db
+from app.models import Customer, Order
+from app.exceptions import *
+from app.db import db
+
 
 logger = root_logger.getLogger("northwind")
 

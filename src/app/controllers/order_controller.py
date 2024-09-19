@@ -1,8 +1,10 @@
 from datetime import datetime
-from sqlalchemy.orm import joinedload, dynamic_loader, selectinload
+from sqlalchemy.orm import joinedload, selectinload
 from flask import Blueprint, request
-from ..models import Order
-from ..db import db
+
+from app.models import Order
+from app.db import db
+
 
 order_bp = Blueprint("orders", __name__)
 

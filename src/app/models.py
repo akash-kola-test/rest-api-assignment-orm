@@ -4,7 +4,7 @@ from typing import Optional, List
 from sqlalchemy import String, ForeignKey, Text
 from sqlalchemy.orm import Mapped, DynamicMapped, relationship, mapped_column
 
-from .db import db
+from app.db import db
 
 
 class Customer(db.Model):

@@ -1,8 +1,10 @@
 import logging
 from sqlalchemy.orm import selectinload, joinedload
 from flask import Blueprint, request
-from ..models import Product
-from ..db import db
+
+from app.models import Product
+from app.db import db
+
 
 product_bp = Blueprint("products", __name__)
 logger = logging.getLogger("northwind")

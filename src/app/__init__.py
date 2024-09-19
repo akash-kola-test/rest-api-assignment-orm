@@ -1,8 +1,9 @@
 from flask import Flask
 from flask_migrate import Migrate
-from .db import db
-from .models import *
-from .controllers import customer_controller, product_controller, order_controller
+
+from app.db import db
+from app.models import *
+from app.controllers import customer_controller, product_controller, order_controller
 
 
 north_wind_app = Flask("northwind")
