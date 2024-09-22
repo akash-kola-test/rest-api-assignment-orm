@@ -57,7 +57,7 @@ def test_get_customer_fails_with_invalid_customer_id():
         customer_service.get_customer(invalid_customer_id_1)
 
     with pytest.raises(InvalidResourceIdException) as exc_info_2:
-        customer_service.get_customer(invalid_customer_id_2)
+        customer_service.get_customer(invalid_customer_id_2) # type: ignore
 
     assert exc_info_1.value.msg == f"Requested customer id {invalid_customer_id_1} is invalid"
     assert exc_info_2.value.msg == f"Requested customer id {invalid_customer_id_2} is invalid"
