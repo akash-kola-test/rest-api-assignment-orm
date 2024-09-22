@@ -30,7 +30,7 @@ def get_all_customers(page: str = "1", page_size: int = 15) -> List[Dict]:
 
 
 def get_customer(customer_id: str) -> Dict:
-    if customer_id is None or len(customer_id) is 0:
+    if customer_id is None or len(customer_id) == 0:
         logger.error("Requested customer id %s is invalid", customer_id)
         raise InvalidResourceIdException(f"Requested customer id {customer_id} is invalid")
 
